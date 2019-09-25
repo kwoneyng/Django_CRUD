@@ -81,8 +81,10 @@ def comments_create(request, article_pk):
 
 def comments_delete(request, article_pk, comment_pk):
     # comment_pk에 해당하는 댓글 삭제
+    # POST 요청으로 들어올 때만
+
     if request.method == 'POST':
         comment = get_object_or_404(Comment, pk=comment_pk)
         comment.delete()
         # 댓글 삭제 후 detail 페이지로 이동
-        return redirect('articles:detail', article_pk)
+    return redirect('articles:detail', article_pk)
