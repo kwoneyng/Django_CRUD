@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Articles{% endblock title %}
+
+{% block body %}
+  <h1>Articles</h1>
+  <a href="{% url 'articles:create' %}">[작성하기]</a>
+  <hr>
+  {% for article in articles %}
+  <div>
+    <h3><a href="{% url 'articles:detail' article.pk %}">{{ article.pk }}. {{ article.title }}</a></h3>
+    <p>{{ article.content }}</p>
+  </div>
+  <br>
+  {% endfor %}
+{% endblock body %}
